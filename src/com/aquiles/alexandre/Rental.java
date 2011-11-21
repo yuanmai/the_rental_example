@@ -20,22 +20,22 @@ public class Rental {
     }
 
     double getCharge() {
-        double thisAmount = 0;
+        double result = 0;
         switch (getMovie().getPriceCode()) {
             case REGULAR:
-                thisAmount += 2;
+                result += 2;
                 if (getDaysRented() > 2)
-                    thisAmount += (getDaysRented() - 2) * 1.5;
+                    result += (getDaysRented() - 2) * 1.5;
                 break;
             case NEW_RELEASE:
-                thisAmount += getDaysRented() * 3;
+                result += getDaysRented() * 3;
                 break;
             case CHILDRENS:
-                thisAmount += 1.5;
+                result += 1.5;
                 if (getDaysRented() > 3)
-                    thisAmount += (getDaysRented() - 3) * 1.5;
+                    result += (getDaysRented() - 3) * 1.5;
                 break;
         }
-        return thisAmount;
+        return result;
     }
 }
