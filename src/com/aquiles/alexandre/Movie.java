@@ -2,7 +2,21 @@ package com.aquiles.alexandre;
 
 public class Movie {
 
-    public enum PriceCode {REGULAR, NEW_RELEASE, CHILDRENS}
+    public enum PriceCode implements Price {
+        REGULAR {
+            public int getFrequentRenterPoints(Integer daysRented) {
+                return 1;
+            }
+        }, NEW_RELEASE {
+            public int getFrequentRenterPoints(Integer daysRented) {
+                return daysRented > 1 ? 2 : 1;
+            }
+        }, CHILDRENS {
+            public int getFrequentRenterPoints(Integer daysRented) {
+                return 1;
+            }
+        }
+    }
 
     private final String title;
     private final PriceCode priceCode;
@@ -21,8 +35,7 @@ public class Movie {
     }
 
     int getFrequentRenterPoints(Integer daysRented) {
-        return getPriceCode() == PriceCode.NEW_RELEASE
-                && daysRented > 1 ? 2 : 1;
+        return getPriceCode().getFrequentRenterPoints(daysRented);
     }
 
     double getCharge(Integer daysRented) {
