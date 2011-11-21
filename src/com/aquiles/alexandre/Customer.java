@@ -27,7 +27,7 @@ public class Customer {
         int frequentRenterPoints = 0;
         String result = "Rental record for " + getName() + "\n";
         for (Rental rental : rentals) {
-            double thisAmount = computeTotalAmount(rental);
+            double thisAmount = rental.getCharge();
 
             //add frequent renter points
             frequentRenterPoints++;
@@ -47,23 +47,4 @@ public class Customer {
         return result;
     }
 
-    private double computeTotalAmount(Rental rental) {
-        double thisAmount = 0;
-        switch (rental.getMovie().getPriceCode()) {
-            case REGULAR:
-                thisAmount += 2;
-                if (rental.getDaysRented() > 2)
-                    thisAmount += (rental.getDaysRented() - 2) * 1.5;
-                break;
-            case NEW_RELEASE:
-                thisAmount += rental.getDaysRented() * 3;
-                break;
-            case CHILDRENS:
-                thisAmount += 1.5;
-                if (rental.getDaysRented() > 3)
-                    thisAmount += (rental.getDaysRented() - 3) * 1.5;
-                break;
-        }
-        return thisAmount;
-    }
 }
