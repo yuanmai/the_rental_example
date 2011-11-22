@@ -1,5 +1,6 @@
 package com.aquiles.alexandre;
 
 public interface Price {
-    public int getFrequentRenterPoints(Integer daysRented);
+    int getFrequentRenterPoints(Integer daysRented);
+    double getCharge(Integer daysRented);
 }

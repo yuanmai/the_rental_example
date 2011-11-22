@@ -4,6 +4,14 @@ public class Movie {
 
     public enum PriceCode implements Price {
         REGULAR {
+            public double getCharge(Integer daysRented) {
+                double result = 0;
+                result += 2;
+                if (daysRented > 2)
+                    result += (daysRented - 2) * 1.5;
+                return result;
+            }
+
             public int getFrequentRenterPoints(Integer daysRented) {
                 return 1;
             }
@@ -11,9 +19,23 @@ public class Movie {
             public int getFrequentRenterPoints(Integer daysRented) {
                 return daysRented > 1 ? 2 : 1;
             }
+
+            public double getCharge(Integer daysRented) {
+                double result = 0;
+                result += daysRented * 3;
+                return result;
+            }
         }, CHILDRENS {
             public int getFrequentRenterPoints(Integer daysRented) {
                 return 1;
+            }
+
+            public double getCharge(Integer daysRented) {
+                double result = 0;
+                result += 1.5;
+                if (daysRented > 3)
+                    result += (daysRented - 3) * 1.5;
+                return result;
             }
         }
     }
@@ -39,30 +61,6 @@ public class Movie {
     }
 
     double getCharge(Integer daysRented) {
-        switch (getPriceCode()) {
-            case REGULAR:
-            {
-                double result = 0;
-                result += 2;
-                if (daysRented > 2)
-                    result += (daysRented - 2) * 1.5;
-                return result;
-            }
-            case NEW_RELEASE:
-            {
-                double result = 0;
-                result += daysRented * 3;
-                return result;
-            }
-            case CHILDRENS:
-            {
-                double result = 0;
-                result += 1.5;
-                if (daysRented > 3)
-                    result += (daysRented - 3) * 1.5;
-                return result;
-            }
-        }
-        return 0;
+        return getPriceCode().getCharge(daysRented);
     }
 }
