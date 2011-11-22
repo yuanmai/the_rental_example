@@ -15,9 +15,7 @@ public enum PriceCode implements Price {
         }
 
         public double getCharge(Integer daysRented) {
-            double result = 0;
-            result += daysRented * 3;
-            return result;
+            return daysRented * 3;
         }
     }, CHILDRENS {
         public int getFrequentRenterPoints(Integer daysRented) {
