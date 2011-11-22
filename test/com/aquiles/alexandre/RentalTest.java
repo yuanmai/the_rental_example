@@ -13,7 +13,7 @@ public class RentalTest {
     @Test
     public void shortRegularRental() {
         Customer customer = createCustomer();
-        addRental(customer, "Groundhog Day", Movie.PriceCode.REGULAR, 2);
+        addRental(customer, "Groundhog Day", PriceCode.REGULAR, 2);
 
         String expected =
                 new StatementConfig()
@@ -28,7 +28,7 @@ public class RentalTest {
     @Test
     public void longRegularRental() {
         Customer customer = createCustomer();
-        addRental(customer, "Groundhog Day", Movie.PriceCode.REGULAR, 3);
+        addRental(customer, "Groundhog Day", PriceCode.REGULAR, 3);
 
         String expected =
                 new StatementConfig()
@@ -43,7 +43,7 @@ public class RentalTest {
     @Test
     public void shortNewReleaseRental() {
         Customer customer = createCustomer();
-        addRental(customer, "X-Men X", Movie.PriceCode.NEW_RELEASE, 1);
+        addRental(customer, "X-Men X", PriceCode.NEW_RELEASE, 1);
 
         String expected =
                 new StatementConfig()
@@ -58,7 +58,7 @@ public class RentalTest {
     @Test
     public void longNewReleaseRental() {
         Customer customer = createCustomer();
-        addRental(customer, "X-Men X", Movie.PriceCode.NEW_RELEASE, 2);
+        addRental(customer, "X-Men X", PriceCode.NEW_RELEASE, 2);
 
         String expected =
                 new StatementConfig()
@@ -73,7 +73,7 @@ public class RentalTest {
     @Test
     public void shortChildrensRental() {
         Customer customer = createCustomer();
-        addRental(customer, "Toy Story", Movie.PriceCode.CHILDRENS, 3);
+        addRental(customer, "Toy Story", PriceCode.CHILDRENS, 3);
 
         String expected =
                 new StatementConfig()
@@ -88,7 +88,7 @@ public class RentalTest {
     @Test
     public void longChildrensRental() {
         Customer customer = createCustomer();
-        addRental(customer, "Toy Story", Movie.PriceCode.CHILDRENS, 4);
+        addRental(customer, "Toy Story", PriceCode.CHILDRENS, 4);
 
         String expected =
                 new StatementConfig()
@@ -103,9 +103,9 @@ public class RentalTest {
     @Test
     public void variousRentals() {
         Customer customer = createCustomer();
-        addRental(customer, "Groundhog Day", Movie.PriceCode.REGULAR, 3);
-        addRental(customer, "X-Men X", Movie.PriceCode.NEW_RELEASE, 2);
-        addRental(customer, "Toy Story", Movie.PriceCode.CHILDRENS, 4);
+        addRental(customer, "Groundhog Day", PriceCode.REGULAR, 3);
+        addRental(customer, "X-Men X", PriceCode.NEW_RELEASE, 2);
+        addRental(customer, "Toy Story", PriceCode.CHILDRENS, 4);
 
         String expected =
                 new StatementConfig()
@@ -133,7 +133,7 @@ public class RentalTest {
         return new Customer("Luke");
     }
 
-    private void addRental(Customer customer, String movieName, Movie.PriceCode priceCode, Integer daysRented) {
+    private void addRental(Customer customer, String movieName, PriceCode priceCode, Integer daysRented) {
         Movie movie = new Movie(movieName, priceCode);
         Rental rental = new Rental(movie, daysRented);
         customer.addRental(rental);
