@@ -133,8 +133,8 @@ public class RentalTest {
         return new Customer("Luke");
     }
 
-    private void addRental(Customer customer, String movieName, PriceCode priceCode, Integer daysRented) {
-        Movie movie = new Movie(movieName, priceCode);
+    private void addRental(Customer customer, String movieName, Price price, Integer daysRented) {
+        Movie movie = new Movie(movieName, price);
         Rental rental = new Rental(movie, daysRented);
         customer.addRental(rental);
     }

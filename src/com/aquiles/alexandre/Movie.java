@@ -3,15 +3,11 @@ package com.aquiles.alexandre;
 public class Movie {
 
     private final String title;
-    private final PriceCode priceCode;
+    private final Price price;
 
-    public Movie(String title, PriceCode priceCode) {
+    public Movie(String title, Price price) {
         this.title = title;
-        this.priceCode = priceCode;
-    }
-
-    public PriceCode getPriceCode() {
-        return priceCode;
+        this.price = price;
     }
 
     public String getTitle() {
@@ -19,10 +15,10 @@ public class Movie {
     }
 
     int getFrequentRenterPoints(Integer daysRented) {
-        return getPriceCode().getFrequentRenterPoints(daysRented);
+        return price.getFrequentRenterPoints(daysRented);
     }
 
     double getCharge(Integer daysRented) {
-        return getPriceCode().getCharge(daysRented);
+        return price.getCharge(daysRented);
     }
 }
