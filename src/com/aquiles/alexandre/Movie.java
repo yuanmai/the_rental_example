@@ -39,22 +39,30 @@ public class Movie {
     }
 
     double getCharge(Integer daysRented) {
-        double result = 0;
         switch (getPriceCode()) {
             case REGULAR:
+            {
+                double result = 0;
                 result += 2;
                 if (daysRented > 2)
                     result += (daysRented - 2) * 1.5;
-                break;
+                return result;
+            }
             case NEW_RELEASE:
+            {
+                double result = 0;
                 result += daysRented * 3;
-                break;
+                return result;
+            }
             case CHILDRENS:
+            {
+                double result = 0;
                 result += 1.5;
                 if (daysRented > 3)
                     result += (daysRented - 3) * 1.5;
-                break;
+                return result;
+            }
         }
-        return result;
+        return 0;
     }
 }
