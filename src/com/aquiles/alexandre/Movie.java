@@ -5,11 +5,7 @@ public class Movie {
     public enum PriceCode implements Price {
         REGULAR {
             public double getCharge(Integer daysRented) {
-                double result = 0;
-                result += 2;
-                if (daysRented > 2)
-                    result += (daysRented - 2) * 1.5;
-                return result;
+                return daysRented > 2 ? 2 + (daysRented - 2) * 1.5 : 2;
             }
 
             public int getFrequentRenterPoints(Integer daysRented) {
@@ -31,11 +27,7 @@ public class Movie {
             }
 
             public double getCharge(Integer daysRented) {
-                double result = 0;
-                result += 1.5;
-                if (daysRented > 3)
-                    result += (daysRented - 3) * 1.5;
-                return result;
+                return daysRented > 3 ? 1.5 + (daysRented - 3) * 1.5 : 1.5;
             }
         }
     }
